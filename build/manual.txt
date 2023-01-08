@@ -1,0 +1,86 @@
+
+[1m[ == MANUAL | BuffonNeedleSimulator == ][0m
+
+[ -- Abstract -- ]
+
+	This program simulates the Buffon Needle experiment.
+	It simulates randomly orientated needles falling onto a canvas
+	with parallel, to the y-axis aligned grid lines.
+	It counts the needles that lay over or "hit" the grid lines.
+	With that, it can give an estimate of pi based on the probability
+	of the needle hits.
+	How often the experiment should be run can be set through the number
+	of iterations.
+	At the end of the execution, a final PI and runtime will be displayed.
+	It writes all results to a file, which information is explained below.
+
+[ -- Result File Information -- ]
+
+	The results file is displaying information for
+	each iteration of the simulation.
+	
+	From left to right, the following information is listed as follows:
+	 1. Number of needles
+	 2. Number of threads
+	 3. Runtime for the iteration
+	 4. Pi for this iteration only
+	 5. Which iteration this runs belongs to
+	 6. The set length of the needle
+	 7. The set grid line distance
+
+[ -- Command Line Arguments -- ]
+
+	--help, -h		Displays this manual.
+	
+	--lowerBound=, -l=	Set the lower boundary of the canvas,
+				on which the needle generate on.
+						
+				[3mDatatype: double
+				Default value:	0.0[0m
+	
+	--upperBound=, -u=	Set the upper boundary of the canvas,
+				on which the needle generate on.
+					
+				[3mDatatype: double
+				Default value:	2.0[0m
+						
+	--gridLineDist=, -g=	Set the distance between the grid lines
+				of the canvas.
+					
+				[3mDatatype: double
+				Default value:	1.0[0m
+						
+	--needleLength=, -nl=	Set the length of one needle.
+
+				[3mDatatype: double
+				Default value:	1.0[0m
+	
+	--threads=, -t=		Set the number of threads used in the calculations.
+				For the best results, use as many threads
+				as your CPU has cores.
+						
+				[3mDatatype: int
+				Default value:	1[0m
+							
+	--needles=, -n=		Set the number of needles.
+	
+				[3mDatatype: long unsigned int
+				Default value:	10.000[0m
+							
+	--iterations=, -i=	How often should the simulation be run again.
+				For values larger than one, it will compute the mean
+				of pi as well.
+				
+				[3mDatatype: long unsigned int
+				Default value:	1[0m
+							
+	--filename=, -f=	Specify the filename of the results file.
+				If the file already exists, the code gives you 5 seconds
+				to terminate the program or else it will overwrite the
+				duplicate file.
+
+				[3mDatatype: string
+				Default value:	result.txt[0m
+							
+[ -- Copyright 2023 -- ]
+Marc Beling, For questions contact 2518486B@student.gla.ac.uk
