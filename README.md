@@ -27,13 +27,24 @@ From left to right, the following information is listed as follows:
  6. The set length of the needle
  7. The set grid line distance
  
- ## Folder structure
+## Folder structure
  
- The executable is in build, as well as the main.cpp, and the makefile.
- In lib, all header and source files are included, which main.cpp needs.
- Please do not alter the folder structure, as the makefile depends on it.
+In plotter, the measurement data and plotter for the paper is included.
+The executable is in build, as well as the main.cpp, and the makefile.
+In lib, all header and source files are included, which main.cpp needs.
+Please do not alter the folder structure, as the makefile depends on it.
+
+## Measurement data
  
- ## Command Line Arguments
+Files that begin with R are for data regarding the ratio between
+needle length and grid line distance.
+Files that start with T are for measuring runtime and thread behaviour.
+Files that do not have a letter in front of them are for number of needles.
+main.py is currently the plotter for number of iterations.
+RPlot.py.backup is the plotter for ratios.
+TPlot.py.backup is the plotter for thread behaviour.
+
+## Command Line Arguments
  
  
 	--help, -h		Displays this manual.
