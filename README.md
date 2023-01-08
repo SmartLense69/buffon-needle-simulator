@@ -1,5 +1,7 @@
 # BuffonNeedleSimulator
 
+## Abstract
+
 This program simulates the Buffon Needle experiment.
 It simulates randomly orientated needles falling onto a canvas
 with parallel, to the y-axis aligned grid lines.
@@ -24,6 +26,12 @@ From left to right, the following information is listed as follows:
  5. Which iteration this runs belongs to
  6. The set length of the needle
  7. The set grid line distance
+ 
+ ## Folder structure
+ 
+ The executable is in build, as well as the main.cpp, and the makefile.
+ In lib, all header and source files are included, which main.cpp needs.
+ Please do not alter the folder structure, as the makefile depends on it.
  
  ## Command Line Arguments
  
