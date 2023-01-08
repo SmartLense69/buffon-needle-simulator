@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+import math as m
+import numpy as np
+
+if __name__ == '__main__':
+    meanArray = np.empty(12)
+    meanArray[0] = np.mean(np.loadtxt("r0_01.txt", delimiter=" ")[:, 3])
+    meanArray[1] = np.mean(np.loadtxt("r0_3.txt", delimiter=" ")[:, 3])
+    meanArray[2] = np.mean(np.loadtxt("r0_6.txt", delimiter=" ")[:, 3])
+    meanArray[3] = np.mean(np.loadtxt("r0_8.txt", delimiter=" ")[:, 3])
+    meanArray[4] = np.mean(np.loadtxt("r0_9.txt", delimiter=" ")[:, 3])
+    meanArray[5] = np.mean(np.loadtxt("r1_0.txt", delimiter=" ")[:, 3])
+    meanArray[6] = np.mean(np.loadtxt("r1_05.txt", delimiter=" ")[:, 3])
+    meanArray[7] = np.mean(np.loadtxt("r1_1.txt", delimiter=" ")[:, 3])
+    meanArray[8] = np.mean(np.loadtxt("r1_15.txt", delimiter=" ")[:, 3])
+    meanArray[9] = np.mean(np.loadtxt("r1_2.txt", delimiter=" ")[:, 3])
+    meanArray[10] = np.mean(np.loadtxt("r2_0.txt", delimiter=" ")[:, 3])
+    meanArray[11] = np.mean(np.loadtxt("r3_0.txt", delimiter=" ")[:, 3])
+
+    X = np.array([1e-05, 0.3, 0.6, 0.8, 0.9, 1.0,
+                  1.05, 1.1, 1.15, 1.2, 2.0, 3.0])
+
+    plt.rcParams['font.size'] = '16'
+    plt.rcParams.update({"text.usetex": True})
+    plt.title("$\pi$ for various ratios $R$\nN=1e+5, Iterations=1e+3")
+    plt.plot(X,np.abs(m.pi-meanArray), label="Simulated values of $\pi$", marker='x')
+    plt.yscale("log")
+    plt.xlabel("Ratio $R$")
+    plt.ylabel("Difference $\Delta\pi$")
+    plt.axvline(1, color='k', linestyle="dashed", label="R=1.0")
+    plt.grid()
+    plt.legend()
+    plt.show()

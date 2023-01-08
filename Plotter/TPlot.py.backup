@@ -1,0 +1,80 @@
+import matplotlib.pyplot as plt
+import math as m
+import numpy as np
+
+if __name__ == '__main__':
+    meanArray = np.empty(12)
+    meanArray[0] = np.mean(np.loadtxt("t_01.txt", delimiter=" ")[:, 2])
+    meanArray[1] = np.mean(np.loadtxt("t_02.txt", delimiter=" ")[:, 2])
+    meanArray[2] = np.mean(np.loadtxt("t_03.txt", delimiter=" ")[:, 2])
+    meanArray[3] = np.mean(np.loadtxt("t_04.txt", delimiter=" ")[:, 2])
+    meanArray[4] = np.mean(np.loadtxt("t_05.txt", delimiter=" ")[:, 2])
+    meanArray[5] = np.mean(np.loadtxt("t_06.txt", delimiter=" ")[:, 2])
+    meanArray[6] = np.mean(np.loadtxt("t_07.txt", delimiter=" ")[:, 2])
+    meanArray[7] = np.mean(np.loadtxt("t_08.txt", delimiter=" ")[:, 2])
+    meanArray[8] = np.mean(np.loadtxt("t_09.txt", delimiter=" ")[:, 2])
+    meanArray[9] = np.mean(np.loadtxt("t_10.txt", delimiter=" ")[:, 2])
+    meanArray[10] = np.mean(np.loadtxt("t_11.txt", delimiter=" ")[:, 2])
+    meanArray[11] = np.mean(np.loadtxt("t_12.txt", delimiter=" ")[:, 2])
+
+    X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    plt.rcParams['font.size'] = '16'
+    plt.rcParams["figure.figsize"] = (6, 5)
+    plt.rcParams.update({"text.usetex": True})
+    plt.title("Runtime for different threads.\n$N=1e+6,I=100$")
+    plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+    plt.grid(axis='y')
+    plt.bar(X, meanArray, label="Runtime")
+    plt.xlabel("Number of threads")
+    plt.ylabel("Runtime in $\mu s$")
+    plt.xticks(range(1, 13))
+    plt.legend()
+    plt.show()
+
+    avg1thread = np.mean(np.loadtxt("t_01.txt", delimiter=" ")[:, 2])
+
+    plt.rcParams['font.size'] = '16'
+    plt.rcParams.update({"text.usetex": True})
+    plt.title("Runtime for 1 to 4 threads,\n$N=1e+6,I=100$")
+    plt.plot(np.loadtxt("t_01.txt", delimiter=" ")[:, 4], np.loadtxt("t_01.txt", delimiter=" ")[:, 2],label="$T=1$")
+    plt.plot(np.loadtxt("t_02.txt", delimiter=" ")[:, 4], np.loadtxt("t_02.txt", delimiter=" ")[:, 2],label="$T=2$")
+    plt.plot(np.loadtxt("t_03.txt", delimiter=" ")[:, 4], np.loadtxt("t_03.txt", delimiter=" ")[:, 2],label="$T=3$")
+    plt.plot(np.loadtxt("t_04.txt", delimiter=" ")[:, 4], np.loadtxt("t_04.txt", delimiter=" ")[:, 2],label="$T=4$")
+    plt.xlim(1, 100)
+    plt.grid()
+    plt.xlabel("Number of iteration")
+    plt.ylabel("Runtime in $\mu s$")
+    plt.legend()
+    plt.show()
+
+    plt.rcParams['font.size'] = '16'
+    plt.rcParams.update({"text.usetex": True})
+    plt.title("Runtime for 5 to 8 threads,\n$N=1e+6,I=100$")
+    plt.plot(np.loadtxt("t_05.txt", delimiter=" ")[:, 4], np.loadtxt("t_05.txt", delimiter=" ")[:, 2],label="$T=5$")
+    plt.plot(np.loadtxt("t_06.txt", delimiter=" ")[:, 4], np.loadtxt("t_06.txt", delimiter=" ")[:, 2],label="$T=6$")
+    plt.plot(np.loadtxt("t_07.txt", delimiter=" ")[:, 4], np.loadtxt("t_07.txt", delimiter=" ")[:, 2],label="$T=7$")
+    plt.plot(np.loadtxt("t_08.txt", delimiter=" ")[:, 4], np.loadtxt("t_08.txt", delimiter=" ")[:, 2],label="$T=8$")
+    plt.axhline(avg1thread, label="$\langle T=1\\rangle$", color='gray', linestyle='dashed')
+    plt.xlim(1, 100)
+    plt.grid()
+    plt.xlabel("Number of iteration")
+    plt.ylabel("Runtime in $\mu s$")
+    plt.legend()
+    plt.show()
+
+    plt.rcParams['font.size'] = '16'
+    plt.rcParams.update({"text.usetex": True})
+    plt.title("Runtime for 9 to 12 threads,\n$N=1e+6,I=100$")
+    plt.plot(np.loadtxt("t_09.txt", delimiter=" ")[:, 4], np.loadtxt("t_09.txt", delimiter=" ")[:, 2],label="$T=9$")
+    plt.plot(np.loadtxt("t_10.txt", delimiter=" ")[:, 4], np.loadtxt("t_10.txt", delimiter=" ")[:, 2],label="$T=10$")
+    plt.plot(np.loadtxt("t_11.txt", delimiter=" ")[:, 4], np.loadtxt("t_11.txt", delimiter=" ")[:, 2],label="$T=11$")
+    plt.plot(np.loadtxt("t_12.txt", delimiter=" ")[:, 4], np.loadtxt("t_12.txt", delimiter=" ")[:, 2],label="$T=12$")
+    plt.axhline(avg1thread, label="$\langle T=1\\rangle$", color='gray', linestyle='dashed')
+    plt.xlim(1, 100)
+    plt.grid()
+    plt.xlabel("Number of iteration")
+    plt.ylabel("Runtime in $\mu s$")
+    plt.legend()
+    plt.show()
+
+
